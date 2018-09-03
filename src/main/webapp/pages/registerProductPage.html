@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Register New Product</title>
+</head>
+<body>
+<b>REGISTER NEW PRODUCT</b>
+</p>
+</p>
+<div>
+    <form th:action="@{/registerproduct}" method="post">
+        <input type="text" name="name" placeholder="name"/> Product name
+        <p/>
+        <input type="text" name="artykul" placeholder="artykul"/> Artykul
+        <p/>
+        <input type="number" name="barcode" placeholder="barcode"/> Barcode
+        <p/>
+        <input type="number" name="price" placeholder="price"/> Product price for 1pcs.
+        <p/>
+        <input type="submit" value="Register new product"/>
+        <input type="hidden"
+               name="${_csrf.parameterName}"
+               value="${_csrf.token}"/>
+    </form>
+
+</div>
+</body>
+</html>

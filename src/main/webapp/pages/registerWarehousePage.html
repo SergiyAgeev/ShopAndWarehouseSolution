@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Warehouse page</title>
+</head>
+<body>
+<b>REGISTER NEW WAREHOUSE</b>
+</p>
+</p>
+<div>
+    <form th:action="@{/registerwarehouse}" method="post">
+        <input type="text" name="city" placeholder="City"/> City
+        <p/>
+        <input type="text" name="adress" placeholder="Adress"/> Adress
+        <p/>
+        <input type="number" name="phoneNumberOfWarehouse" placeholder="Phone Number Of Warehouse"/> Phone Number Of
+        Warehouse
+        <p/>
+        <input type="text" name="director" placeholder="Director"/> Director
+        <p/>
+        <input type="number" name="numberOfWorkers" placeholder="NumberOfWorkers"/> Number Of Workers
+        <p/>
+        <input type="submit" value="Register"/>
+        <input type="hidden"
+               name="${_csrf.parameterName}"
+               value="${_csrf.token}"/>
+    </form>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Register Page</title>
+</head>
+<body>
+<b>REGISTER NEW USER</b>
+</p>
+</p>
+<div>
+    <form th:action="@{/save}" method="post" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="name"/> Name
+        <p/>
+        <input type="text" name="surname" placeholder="surname"/> Second name
+        <p/>
+        <input type="number" name="age" placeholder="age"/> Age
+        <p/>
+        <input type="text" name="passportSerie" placeholder="passportSerie"/> Passport serie
+        <p/>
+        <input type="number" name="passportNumber" placeholder="passportNumber"/> Passport number
+        <p/>
+        <input type="number" name="WareHouseId" placeholder="Warehouse" value ="0"/> Warehouse
+        <p/>
+        <input type="number" name="ShopId" placeholder="Shop" value="0"/> Shop
+        <p/>
+
+
+        <input type="text" name="username" placeholder="username"/>  Username
+        <p/>
+        <input type="email" name="email" placeholder="email"/> Email
+        <p/>
+        <input type="password" name="password" placeholder="password"/> Password
+        <p/>
+        <input type="file" name="avatar" placeholder="photo"/> Photo
+        <p/>
+
+
+        <input type="submit" value="Register"/>
+        <input type="hidden"
+               name="${_csrf.parameterName}"
+               value="${_csrf.token}"/>
+    </form>
+
+</div>
+</body>
+</html>
