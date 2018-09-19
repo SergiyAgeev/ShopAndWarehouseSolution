@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.List;
 
 /**
  * Created by Sergiy Ageev on 01.09.2018.
@@ -77,5 +78,12 @@ public class UserController {
         User user = userService.findByUserName(principal.getName());
         uiModel.addAttribute("user", user);
         return "userPage";
+    }
+
+    @GetMapping("/showallusers")
+    public String showAllUsers(Model model) {
+        List<User> user = userService.findAll();
+        model.addAttribute("UserX", userService.findAll());
+        return "userListPage";
     }
 }

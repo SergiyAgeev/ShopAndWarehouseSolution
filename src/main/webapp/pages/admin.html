@@ -5,11 +5,12 @@
     <title>admin</title>
 </head>
 <body>
+<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+<h1>Admin page (Spring Security protected)</h1>
 <div class="container">
 
     <div class="starter-template">
-        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-        <h1>Admin page (Spring Security protected)</h1>
+
 
         <form th:action="@{/register}">
             <input type="submit" value="Register new user">
@@ -23,11 +24,33 @@
         <form th:action="@{/registernewwarehouse}">
             <input type="submit" value="Register new Warehouse">
         </form>
+        <p></p>
+        <p></p>
+        <p></p>
+        <div>
+            <form th:action="@{/showallusers}" method="get">
+                <input type="submit" value="Show all users">
+            </form>
+        </div>
+        <div>
+            <form th:action="@{/showallshops}" method="get">
+                <input type="submit" value="Show all shops">
+            </form>
+        </div>
+        <div>
+            <form th:action="@{/showallwarehouses}" method="get">
+                <input type="submit" value="Show all warehouses">
+            </form>
+        </div>
+        <p></p>
+        <p></p>
+        <p></p>
         <form th:action="@{/logout}" method="post">
             <input type="submit" value="Sign Out"/>
         </form>
 
     </div>
+
 
 </div>
 

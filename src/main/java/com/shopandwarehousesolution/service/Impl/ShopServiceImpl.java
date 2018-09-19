@@ -24,7 +24,7 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public List<Shop> findAll() {
-        return null;
+        return sdao.findAll();
     }
 
     @Override
