@@ -1,6 +1,8 @@
 package com.shopandwarehousesolution.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Sergiy Ageev on 01.09.2018.
@@ -21,6 +23,12 @@ public class Shop {
     @Column(nullable = false, length = 100)
     private int numberOfWorkers;
 
+    @OneToOne(mappedBy = "shop_id", cascade=CascadeType.ALL)
+//    private Set<StockShop> stockShop = new HashSet<StockShop>();
+
+    private StockShop stockShop;
+
+
     public Shop() {
     }
 
@@ -31,6 +39,14 @@ public class Shop {
         this.director = director;
         this.numberOfWorkers = numberOfWorkers;
     }
+
+//    public Set<StockShop> getStockShop() {
+//        return stockShop;
+//    }
+//
+//    public void setStockShop(Set<StockShop> stockShop) {
+//        this.stockShop = stockShop;
+//    }
 
     public int getId() {
         return id;

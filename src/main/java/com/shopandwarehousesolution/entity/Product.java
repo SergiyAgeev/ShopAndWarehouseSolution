@@ -2,6 +2,8 @@ package com.shopandwarehousesolution.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Sergiy Ageev on 01.09.2018.
@@ -19,6 +21,12 @@ public class Product {
     private String artykul;
     @Column(nullable = false, length = 100)
     private float price;
+
+    @OneToMany(mappedBy = "product_id", cascade=CascadeType.ALL)
+    private Set<StockShop> stockShopts = new HashSet<StockShop>();
+
+    @OneToMany(mappedBy = "product_id", cascade=CascadeType.ALL)
+    private Set<WarehouseStock> warehouseStocks = new HashSet<WarehouseStock>();
 
     private Date date = new Date();
 

@@ -22,13 +22,13 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 @ComponentScan("com.shopandwarehousesolution.*")
-public class SpringSecurity extends WebSecurityConfigurerAdapter{
+public class SpringSecurity extends WebSecurityConfigurerAdapter {
 
     @Autowired
     UserDetailsService userDetailsService;
 
     @Bean
-    public DaoAuthenticationProvider authenticationProvider(){
+    public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setUserDetailsService(userDetailsService);
         provider.setPasswordEncoder(passwordEncoder());
@@ -37,19 +37,16 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter{
     }
 
 
-
-
-
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
 
-
-    private InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder> inMemoryConfigure(){
+    private InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder> inMemoryConfigure() {
         return new InMemoryUserDetailsManagerConfigurer<>();
     }
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder builder, AuthenticationProvider provider) throws Exception {
         inMemoryConfigure()
@@ -60,6 +57,7 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter{
                 .configure(builder);
         builder.authenticationProvider(provider);
     }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/").permitAll()
@@ -67,7 +65,6 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter{
                 .antMatchers("/showallusers/**").access("hasRole('ADMIN')")
                 .antMatchers("/user/**").access("hasRole('USER')")
                 .antMatchers("/userPage/**").access("hasRole('USER')")
-
 
 
                 .and()
@@ -80,9 +77,6 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter{
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .and()
                 .csrf().disable();
-
-
-
 
 
     }

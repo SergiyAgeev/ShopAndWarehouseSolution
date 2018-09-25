@@ -21,6 +21,9 @@ public class WareHouse {
     @Column(nullable = false, length = 100)
     private int numberOfWorkers;
 
+    @OneToOne(mappedBy = "warehouse_id", cascade=CascadeType.ALL)
+    private WarehouseStock warehouseStock;
+
     public WareHouse() {
     }
 
