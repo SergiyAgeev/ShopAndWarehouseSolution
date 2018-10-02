@@ -9,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.security.Principal;
 import java.util.Date;
 import java.util.List;
 
@@ -41,5 +43,13 @@ public class ProductController {
         List<Product> product = productService.findAll();
         model.addAttribute("ProductX", productService.findAll());
         return "ProductListPage";
+    }
+
+    @RequestMapping("/showoneproduct")
+    public String editUser(int id,
+                           Model uiModel) {
+        Product product = productService.findOne(id);
+        uiModel.addAttribute("user", product);
+        return "UserEdit";
     }
 }
